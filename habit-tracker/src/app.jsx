@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './app.css';
-import Habits from './components/habits.jsx';
+import Habits from './components/habits';
 import Navbar from './components/navbar';
 
 class App extends Component {
@@ -13,7 +13,6 @@ class App extends Component {
   };
 
   handleIncrement = habit => {
-    console.log(`handleIncrement ${habit.name}`);
     const habits = [...this.state.habits];
     const idx = habits.indexOf(habit);
     habits[idx].count++;
@@ -21,7 +20,6 @@ class App extends Component {
   };
 
   handleDecrement = habit => {
-    console.log(`handleDecrement ${habit.name}`);
     const habits = [...this.state.habits];
     const idx = habits.indexOf(habit);
     const count = habits[idx].count - 1;
@@ -30,10 +28,19 @@ class App extends Component {
   };
 
   handleDelete = habit => {
-    console.log(`handleDelete ${habit.name}`);
     const habits = this.state.habits.filter(h => h.id !== habit.id);
     this.setState({ habits });
   };
+
+  handleAdd = name => {
+    const habit = {
+      id: Date.now(),
+      name,
+      count: 0
+    }
+    const habits = [...this.state.habits, habit];
+    this.setState({ habits });
+  }
 
   render() {
     return (
@@ -44,6 +51,7 @@ class App extends Component {
         onIncrement={this.handleIncrement}
         onDecrement={this.handleDecrement}
         onDelete={this.handleDelete}
+        onAdd={this.handleAdd}
       />
       </>
     );
