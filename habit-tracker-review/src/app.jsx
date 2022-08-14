@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import HabitsEdit from './components/habitsEdit';
 import Navbar from './components/navbar';
 import './app.css';
 
-class App extends Component {
+class App extends PureComponent {
   state = {
     habits: [
       { id: 1, name: "Reading", count: 0 },
@@ -46,10 +46,12 @@ class App extends Component {
   };
 
   handleReset = () => {
-    const habits = [...this.state.habits];
-    habits.forEach(item => {
-      item.count = 0
-    });
+    const habits = this.state.habits.map(item => {
+      if (item.count !== 0) {
+        return {...item, count: 0}
+      }
+      return item;
+    })
     this.setState({ habits })
   }
 
