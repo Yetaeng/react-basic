@@ -12,7 +12,8 @@
   box-sizing: border-box;
 }
 
-p, button, ul, li {
+body, p, button, ul, li,
+h1, h2, h3 {
   padding: 0;
   margin: 0;
 }
@@ -38,8 +39,8 @@ ul,li {
 }
 
 #root {
-  width: 100%;
-  height: 100vh;
+  font-family: "Roboto","Arial",sans-serif;
+  min-width: 1024px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,6 +56,17 @@ ul,li {
   font-size: 1.3rem;
   padding: 0.5em;
   background-color: black;
+}
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  margin-left: 0.3em;
+  margin-right: 0.5em;
 }
 
 .search-form {
@@ -103,6 +115,12 @@ ul,li {
   margin: 0.1em;
 }
 
+.video-item:hover {
+  cursor: pointer;
+  transition: all 0.1s ease-in;
+  transform: scale(1.02); 
+}
+
 .thumbnail {
   width: 45%;
   margin: 0.5em;
@@ -111,15 +129,30 @@ ul,li {
 .video-info {
   display: flex;
   flex-direction: column;
-  width: 23em;
-  font-family: "Roboto","Arial",sans-serif;
+  margin: 1em 0.5em 1em 0;
 }
 
 .video-title {
+  font-size: 1em;
   color: var(--color-spec-text-primary);
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .channel-name {
   font-size: var(--size-channel-name-text);
   color: var(--color-spec-text-secondary);
 } 
+
+@media screen and (max-width: 767px) {
+  .video-item {
+    width: 100%;
+  }
+}
