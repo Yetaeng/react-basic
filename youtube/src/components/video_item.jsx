@@ -9,7 +9,7 @@ class VideoItem extends Component {
             <li className='video-item'>
                 <img src={url} alt="thumbnail" className="thumbnail" />
                 <div className="video-info">
-                    <p className="video-title">{title}</p>
+                    <p className="video-title, ellipsis">{title}</p>
                     <span className="channel-name">{channelTitle}</span>
                 </div>
             </li>

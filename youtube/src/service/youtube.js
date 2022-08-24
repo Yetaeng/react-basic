@@ -14,7 +14,16 @@ class Youtube {
         return response.data.items;
     }
 
-
+    async searchVideo(query) {
+        const response = await this.youtube.get('search', {
+            params: {
+                part: 'snippet',
+                maxResults: 25,
+                q: query,
+            },
+        });
+        return response.data.items;
+    }
 }
 
 export default Youtube;
