@@ -1,17 +1,14 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import VideoItem from './video_item';
 
-class VideoList extends Component {
-    render() {
-
-        return (
-            <ul className='video-list'>
-                {this.props.videos.map((video) => (
-                    <VideoItem key={video.id} video={video}/>           
-                ))}
-            </ul>
-        );
-    }
+const VideoList = ({ youtubeService, videos }) => {
+    return (
+        <ul className='video-list'>
+            {videos.map((video) => (
+                <VideoItem key={video.id} video={video} />           
+            ))}
+        </ul>
+    )
 }
 
 export default VideoList;

@@ -1,18 +1,19 @@
 import React, { memo } from 'react';
 
-const Header = memo((props) => {
+const Header = memo(({ onSearch }) => {
   const inputRef = React.createRef();
 
   const onSubmit = (e) => {
     e.preventDefault();
     let query = inputRef.current.value;
-    query && props.onSearch(query);
+    query && onSearch(query);
     // inputRef.current.value = ''; // 유튜브는 검색한 단어가 그대로 남음
   }
 
   return (
     <header className='header'>
       <h1>
+      {/* change to <Link> */}
         <a href="http://localhost:3000" className='logo-wrap'>
             <img src="/images/logo.png" alt="logo"/>
             <span className="logo-text">Youtube</span>

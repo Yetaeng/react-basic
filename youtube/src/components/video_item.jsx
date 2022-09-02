@@ -6,6 +6,7 @@ class VideoItem extends Component {
         const {url} = this.props.video.snippet.thumbnails.medium;
 
         return (
+            // change to <Link>
             <li className='video-item'>
                 <img src={url} alt="thumbnail" className="thumbnail" />
                 <div className="video-info">
