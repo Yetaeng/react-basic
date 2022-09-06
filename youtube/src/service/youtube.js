@@ -20,12 +20,23 @@ class Youtube {
                 part: 'snippet',
                 maxResults: 25,
                 q: query,
+                type: 'video',
             },
         });
         return response.data.items.map((item) => ({
             ...item,
-            id: item.id.videoId ? item.id.videoId : item.id.channelId,
+            id: item.id.videoId
         }));
+    }
+
+    async watchVideo(videoId) {
+        const response = await this.youtube.get('watch', {
+            params: { 
+                part: 'snippet',
+            }
+        });
+        console.log('service ', response.data);
+        return response.data;
     }
 }
 

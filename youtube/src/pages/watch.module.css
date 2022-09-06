@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+}
+
+.container.detail {
+    flex: 1 1 70%;
+}
+
+.container.list {
+    flex: 1 1 30%;
+}
