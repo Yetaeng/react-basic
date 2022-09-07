@@ -11,16 +11,15 @@ import Watch from './pages/watch';
 function App({ youtubeService }) {
   const [videos, setVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSearch = useCallback((query) => {
-    // navigate('/results');
+    navigate('/results');
     setSelectedVideo(null);
-
     youtubeService
     .searchVideo(query)
     .then((videos) => setVideos(videos));
-  }, [youtubeService]);
+  }, [youtubeService, navigate]);
 
   const handleSelect = (video) => {
     // navigate('/watch/:videoId');
@@ -45,6 +44,15 @@ function App({ youtubeService }) {
           path="/"
           element={
             <Main
+              videos={videos}
+              onSelect={handleSelect}
+            />
+          }
+        ></Route>
+        <Route
+          path="/results"
+          element={
+            <Search
               youtubeService={youtubeService}
               videos={videos}
               onSelect={handleSelect}
