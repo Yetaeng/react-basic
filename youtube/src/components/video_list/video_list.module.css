@@ -4,3 +4,10 @@
     justify-content: space-between;
     list-style: none;
 }
+
+/* 768px */
+@media screen and (max-width: 48rem) {
+    .video_list {
+        flex-direction: column;
+    }
+}

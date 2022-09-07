@@ -12,12 +12,11 @@
 .logo_wrap {
     display: flex;
     align-items: center;
-    text-decoration: none;
-    color: white;
 }
 
 .logo_text {
     font-size: 1.5rem;
+    color: white;
     margin-left: 0.3em;
     margin-right: 0.5em;
 }

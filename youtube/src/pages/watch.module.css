@@ -2,10 +2,17 @@
     display: flex;
 }
 
-.container.detail {
+.detail {
     flex: 1 1 70%;
+    padding-top: 0.2em;
 }
 
-.container.list {
+.list {
     flex: 1 1 30%;
+}
+
+@media screen and (max-width: 48rem) {
+    .container {
+        display: block;
+    }
 }

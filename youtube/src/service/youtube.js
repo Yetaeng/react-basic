@@ -28,16 +28,6 @@ class Youtube {
             id: item.id.videoId
         }));
     }
-
-    async watchVideo(videoId) {
-        const response = await this.youtube.get('watch', {
-            params: { 
-                part: 'snippet',
-            }
-        });
-        console.log('service ', response.data);
-        return response.data;
-    }
 }
 
 export default Youtube;

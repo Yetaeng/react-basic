@@ -1,8 +1,9 @@
 import React, { memo } from 'react';
 import styles from './header.module.css';
+import { Link } from 'react-router-dom';
 
-const Header = memo(({ onSearch }) => {
-  const inputRef = React.createRef(); // 훅에서는 useRef()를 사용해야 계속 memo가 됨
+const Header = memo(({ onSearch, onClickLogo }) => {
+  const inputRef = React.useRef();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -13,14 +14,25 @@ const Header = memo(({ onSearch }) => {
 
   return (
     <header className={styles.header}>
-      <a href="http://localhost:3000" className={styles.logo_wrap}>
-          <img src="/images/logo.png" alt="logo"/>
+      <Link to="/">
+        <div className={styles.logo_wrap} onClick={() => onClickLogo()}>
+          <img src="/images/logo.png" alt="logo" />
           <h1 className={styles.logo_text}>Youtube</h1>
-      </a>
+        </div>
+      </Link>
       <form action="submit" className={styles.search_form} onSubmit={onSubmit}>
-        <input type="text" className={styles.search_input} placeholder='Search..' ref={inputRef}/>
+        <input
+          type="text"
+          className={styles.search_input}
+          placeholder="Search.."
+          ref={inputRef}
+        />
         <button className={styles.search_button}>
-          <img src="/images/search.png" alt="search" className={styles.search_button_img} />
+          <img
+            src="/images/search.png"
+            alt="search"
+            className={styles.search_button_img}
+          />
         </button>
       </form>
     </header>
