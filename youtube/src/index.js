@@ -17,16 +17,14 @@ const httpClient = axios.create({
   params: {
     key: process.env.REACT_APP_YOUTUBE_API_KEY,
   },
-  // crossDomain: true,
-  // withCredentials: true,
 })
 const youtubeService = new Youtube(httpClient);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <BrowserRouter> */}
+    <BrowserRouter>
       <App youtubeService={youtubeService}/>
-    {/* </BrowserRouter> */}
+    </BrowserRouter>
   </React.StrictMode>
 );

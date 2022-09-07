@@ -1,9 +1,8 @@
 import React from 'react';
 import VideoList from '../components/video_list/video_list';
 
-const Main = ({ youtubeService, videos, onSelect}) => (
+const Main = ({ videos, onSelect }) => (
     <VideoList
-        youtubeService={youtubeService}
         videos={videos}
         onSelect={onSelect}
     />

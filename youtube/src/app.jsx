@@ -39,7 +39,20 @@ function App({ youtubeService }) {
 
   return (
     <div className={styles.app}>
-      <Header onSearch={handleSearch}></Header>
+      <Header onSearch={handleSearch} />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Main
+              youtubeService={youtubeService}
+              videos={videos}
+              onSelect={handleSelect}
+            />
+          }
+        ></Route>
+      </Routes>
+      {/* <Header onSearch={handleSearch}></Header>
       <section className={styles.content}>
         {selectedVideo && (
           <div className={styles.detail}>
@@ -49,7 +62,7 @@ function App({ youtubeService }) {
         <div className={styles.list}>
           <VideoList videos={videos} onSelect={handleSelect} display={selectedVideo ? 'list' : 'grid'}></VideoList>
         </div>
-      </section>
+      </section> */}
     </div>
     // <>
     //   <Header onSearch={handleSearch} />
