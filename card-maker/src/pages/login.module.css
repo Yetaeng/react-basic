@@ -1,0 +1,43 @@
+.container {
+    width: 22rem;
+    height: 15rem;
+    text-align: center;
+    color: #fff;
+    padding: 0.2em 0;
+    background-color: #385461;
+}
+
+.title {
+    font-size: 1.5rem;
+}
+
+.loginArea {
+    display: flex;
+    flex-direction: column;
+    color: #000;
+    background-color: #fff;
+    padding: 1em 0.3em;
+    margin: 0.6em 0;
+}
+
+.loginArea h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.6em;
+}
+
+.loginBtn {
+    padding: 0.4em;
+    margin: 0.2em;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.loginBtn:hover {
+    cursor: pointer;
+    background-color: pink;
+    font-weight: 600;
+}
+
+.footer {
+    font-size: 0.8rem;
+}
