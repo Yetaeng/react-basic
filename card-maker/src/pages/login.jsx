@@ -4,7 +4,7 @@ import styles from './login.module.css';
 const Login = props => {
     return (
         <div className={styles.container}>
-            <img src="../../public/images/logo.png" alt="logo" />
+            <img src="./images/logo.png" alt="logo" className={styles.logo}/>
             <h1 className={styles.title}>Business Card Maker</h1>
             <div className={styles.loginArea}>
                 <h2>Login</h2>

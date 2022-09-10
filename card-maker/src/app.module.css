@@ -1,4 +1,9 @@
+/* @value makerBlack from './src/common/colors.module.css' */
+
 .app {
+    background-color: black;
+    height: 100vh;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
