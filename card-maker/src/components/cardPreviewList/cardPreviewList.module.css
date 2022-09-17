@@ -1,0 +1,8 @@
+.title {
+    color: #385461;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
