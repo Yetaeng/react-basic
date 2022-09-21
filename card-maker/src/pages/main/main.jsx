@@ -36,6 +36,7 @@ const Main = props => {
                     <CardPreviewList />
                 </div>
             </div>
+            <footer className={styles.footer}>Code your dream</footer>
         </>
     )
 };

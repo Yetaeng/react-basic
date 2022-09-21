@@ -10,6 +10,7 @@ function App({ auth }) {
     <div className={styles.app}>
       <Routes>
         <Route path="/login" element={<Login auth={auth}/>}></Route>
+        <Route path="/" element={<Login auth={auth}/>}></Route>
         <Route path="/main" element={<Main />}></Route>
         {/* <Route path={['/', '/main']} element={<Main />}></Route> */}
       </Routes>
