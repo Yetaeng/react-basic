@@ -20,10 +20,10 @@ const CardItem = ({ onAddCard }) => {
             message: messageRef.current.value,
         }
         onAddCard(infos);
-        console.log(colorRef.current);
+
         nameRef.current.value = ''
         companyRef.current.value = ''
-        // colorRef.current.[0];
+        colorRef.current.value = 'light'
         titleRef.current.value = ''
         emailRef.current.value = ''
         messageRef.current.value = ''

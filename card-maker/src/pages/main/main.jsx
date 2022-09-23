@@ -40,8 +40,12 @@ const Main = () => {
             message: infos.message,
         }
         setCards([...cards, card]);
-        console.log(cards);
     }, [cards])
+
+    const handleDelete = card => {
+        const filteredCards = cards.filter(item => item.id !== card.id);
+        setCards(filteredCards);
+    }
 
     return (
         <>
@@ -56,10 +60,10 @@ const Main = () => {
             </header>
             <div className={styles.contents}>
             <div className={styles.cardMaker}>
-                <CardList onAddCard={handleAddCard} cards={cards}/>
+                <CardList onAddCard={handleAddCard} cards={cards} onDeleteCard={handleDelete}/>
             </div>
             <div className={styles.cardPreview}>
-                <CardPreviewList cards={cards}/>
+                <CardPreviewList cards={cards} onDeleteCard={handleDelete}/>
             </div>
             </div>
             <footer className={styles.footer}>Code your dream</footer>
