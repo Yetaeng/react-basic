@@ -5,18 +5,10 @@ import { useNavigate } from "react-router-dom";
 import CardList from "../../components/cardList/cardList";
 import CardPreviewList from "../../components/cardPreviewList/cardPreviewList";
 import { useCallback } from "react";
-import { useEffect } from "react";
 
 const Main = () => {
     const navigate = useNavigate();
     const [cards, setCards] = useState([]);
-
-    const [name, setName] = useState("");
-    const [company, setCompany] = useState("");
-    const [color, setColor] = useState("");
-    const [title, setTitle] = useState("");
-    const [email, setEmail] = useState("");
-    const [message, setMessage] = useState("")
 
     const handleLogout = () => {
         const logout = getAuth();
@@ -47,26 +39,43 @@ const Main = () => {
         setCards(filteredCards);
     }
 
+    const handleUpdate = useCallback((id, prop, value) => {
+        const card = cards.find(item => item.id === id);
+        if (card) {
+            card[prop] = value;
+        }
+        const updatedCards = cards.map(item => {
+            return item.id === id ? item=card : item;
+        });
+
+        setCards([...updatedCards]);
+    }, [cards])
+
     return (
         <>
-            <header className={styles.header}>
-            <div className={styles.innerHeader}>
-                <img className={styles.logo} src="./images/logo.png" alt="logo" />
-                <button onClick={handleLogout} className={styles.logoutBtn}>
-                Logout
-                </button>
-            </div>
-            <h1 className={styles.title}>Business Card Maker</h1>
-            </header>
-            <div className={styles.contents}>
+        <header className={styles.header}>
+        <div className={styles.innerHeader}>
+            <img className={styles.logo} src="./images/logo.png" alt="logo" />
+            <button onClick={handleLogout} className={styles.logoutBtn}>
+            Logout
+            </button>
+        </div>
+        <h1 className={styles.title}>Business Card Maker</h1>
+        </header>
+        <div className={styles.contents}>
             <div className={styles.cardMaker}>
-                <CardList onAddCard={handleAddCard} cards={cards} onDeleteCard={handleDelete}/>
+                <CardList
+                    cards={cards}
+                    onAddCard={handleAddCard}
+                    onDeleteCard={handleDelete}
+                    onUpdate={handleUpdate}
+                />
             </div>
-            <div className={styles.cardPreview}>
-                <CardPreviewList cards={cards} onDeleteCard={handleDelete}/>
-            </div>
-            </div>
-            <footer className={styles.footer}>Code your dream</footer>
+        <div className={styles.cardPreview}>
+            <CardPreviewList cards={cards} />
+        </div>
+        </div>
+        <footer className={styles.footer}>Code your dream</footer>
         </>
     );
 };

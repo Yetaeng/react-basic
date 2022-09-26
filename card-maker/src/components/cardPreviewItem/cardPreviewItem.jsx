@@ -4,9 +4,12 @@ import styles from './cardPreviewItem.module.css';
 const CardPreviewItem = ({ card }) => {
     let colorType;
     
-    if (card.color === 'dark') {
+    // 문제점 수정할때마다 조건문 안쪽을 탐. 왜냐면 색깔조건이 맞으니까..
+    if (card.color === 'light') {
+        colorType = styles.light;
+    } else if (card.color === 'dark') {
         colorType = styles.dark;
-    } else if (card.color === 'colorful') {
+    } else {
         colorType = styles.colorful;
     }
 
