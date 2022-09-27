@@ -1,16 +1,19 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import styles from './cardItem.module.css';
 
 const CardItem = ({ onAddCard }) => {
+    const [image, setImage] = useState(null);
     let nameRef = useRef();
     let companyRef = useRef();
     let colorRef = useRef();
     let titleRef = useRef();
     let emailRef = useRef();
     let messageRef = useRef();
+    let avatarRef = useRef();
 
     const onAdd = (e) => {
         e.preventDefault();
+
         const infos = {
             name: nameRef.current.value,
             company: companyRef.current.value,
@@ -18,6 +21,7 @@ const CardItem = ({ onAddCard }) => {
             title: titleRef.current.value,
             email: emailRef.current.value,
             message: messageRef.current.value,
+            avatar: image ? image : null,
         }
         onAddCard(infos);
 
@@ -27,6 +31,7 @@ const CardItem = ({ onAddCard }) => {
         titleRef.current.value = ''
         emailRef.current.value = ''
         messageRef.current.value = ''
+        avatarRef.current.value = null;
     }
 
     return (
@@ -49,7 +54,7 @@ const CardItem = ({ onAddCard }) => {
                 <div className={`${styles.row} ${styles.fileAndBtn}`}>
                     <label>
                         <div className={styles.inputFileLabel}>No File</div>
-                        <input type="file" className={styles.inputFile}/>
+                        <input ref={avatarRef} type="file" accept='image/*' className={styles.inputFile} onChange={(e) => {setImage(e.target.files[0])}}/>
                     </label>
                     <button type='submit' className={styles.inputBtn} onClick={onAdd}>Add</button>
                 </div>

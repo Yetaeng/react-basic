@@ -30,6 +30,7 @@ const Main = () => {
             title: infos.title,
             email: infos.email,
             message: infos.message,
+            avatar: infos.avatar
         }
         setCards([...cards, card]);
     }, [cards])

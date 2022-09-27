@@ -2,13 +2,16 @@ import React from 'react';
 import styles from './cardEditForm.module.css';
 
 const CardEditForm = ({ card, onDeleteCard, onUpdate }) => {
-
     const onDelete = () => {
         onDeleteCard(card);
     }
 
     const onChangeCard = e => {
         onUpdate(card.id, e.target.name, e.target.value);
+    }
+
+    const onChangeAvatar = e => {
+        onUpdate(card.id, 'avatar', e.target.files[0]);
     }
 
     return (
@@ -29,9 +32,9 @@ const CardEditForm = ({ card, onDeleteCard, onUpdate }) => {
         <textarea name="message" id="message" cols="15" rows="3" placeholder='Message' defaultValue={card.message} onChange={onChangeCard}></textarea>
         <div className={`${styles.row} ${styles.fileAndBtn}`}>
             <label>
-                {/* 파일버튼명은 로그인사용자 이름으로 변경하기... 파일명으로인가?*/}
-                <div className={styles.inputFileLabel}>No file</div>
-                <input type="file" className={styles.inputFile}/>
+                {/* 파일명으로 하면, 파일 이름이 이상할 때 처리는? */}
+                <div className={styles.inputFileLabel}>{card.avatar ? card.avatar.name : 'No File'}</div>
+                <input type="file" className={styles.inputFile} onChange={onChangeAvatar}/>
             </label>
             <button className={styles.inputBtn} onClick={onDelete}>Delete</button>
         </div>
