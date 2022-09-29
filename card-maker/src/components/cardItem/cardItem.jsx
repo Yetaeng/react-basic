@@ -34,6 +34,25 @@ const CardItem = ({ onAddCard }) => {
         avatarRef.current.value = null;
     }
 
+    const uploadToCloudinary = async (file) => {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', `${process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET}`);
+
+        const res = await fetch(`https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_NAME}/image/upload`, {
+            method: 'POST',
+            body: formData,
+        });
+
+        let data;
+        try {
+            data = await res.json();
+        } catch (error) {
+            console.error(error);
+        }
+        return data;
+    }
+
     return (
         <>
             <form className={styles.cardItem}>
@@ -54,7 +73,7 @@ const CardItem = ({ onAddCard }) => {
                 <div className={`${styles.row} ${styles.fileAndBtn}`}>
                     <label>
                         <div className={styles.inputFileLabel}>No File</div>
-                        <input ref={avatarRef} type="file" accept='image/*' className={styles.inputFile} onChange={(e) => {setImage(e.target.files[0])}}/>
+                        <input ref={avatarRef} type="file" accept='image/*' className={styles.inputFile} onChange={(e) => {uploadToCloudinary(e.target.files[0]); setImage(e.target.files[0])}}/>
                     </label>
                     <button type='submit' className={styles.inputBtn} onClick={onAdd}>Add</button>
                 </div>
