@@ -1,0 +1,8 @@
+.inputFileLabel {
+    font-weight: 600;
+    text-align: center;
+}
+
+.inputFile {
+    display: none;
+}

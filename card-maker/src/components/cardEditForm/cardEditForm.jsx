@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ImageInput from '../imageInput/imageInput';
 import styles from './cardEditForm.module.css';
 
-const CardEditForm = ({ card, onDeleteCard, onUpdate }) => {
+const CardEditForm = ({ card, onDeleteCard, onUpdate, uploader }) => {
+    const [image, setImage] = useState(null);
+    
     const onDelete = () => {
         onDeleteCard(card);
     }
@@ -11,6 +14,8 @@ const CardEditForm = ({ card, onDeleteCard, onUpdate }) => {
     }
 
     const onChangeAvatar = e => {
+        setImage(e.target.files[0]);
+        uploader.uploadImage(e.target.files[0]);
         onUpdate(card.id, 'avatar', e.target.files[0]);
     }
 
@@ -31,11 +36,7 @@ const CardEditForm = ({ card, onDeleteCard, onUpdate }) => {
         </div>
         <textarea name="message" id="message" cols="15" rows="3" placeholder='Message' defaultValue={card.message} onChange={onChangeCard}></textarea>
         <div className={`${styles.row} ${styles.fileAndBtn}`}>
-            <label>
-                {/* 파일명으로 하면, 파일 이름이 이상할 때 처리는? */}
-                <div className={styles.inputFileLabel}>{card.avatar ? card.avatar.name : 'No File'}</div>
-                <input type="file" className={styles.inputFile} onChange={onChangeAvatar}/>
-            </label>
+            <ImageInput avatar={card.avatar} image={image} onChange={onChangeAvatar}/>
             <button className={styles.inputBtn} onClick={onDelete}>Delete</button>
         </div>
     </form>

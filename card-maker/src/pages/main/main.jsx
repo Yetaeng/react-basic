@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import styles from "./main.module.css";
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import CardList from "../../components/cardList/cardList";
 import CardPreviewList from "../../components/cardPreviewList/cardPreviewList";
-import { useCallback } from "react";
 
-const Main = () => {
+const Main = ({ uploader }) => {
     const navigate = useNavigate();
     const [cards, setCards] = useState([]);
 
@@ -70,6 +69,7 @@ const Main = () => {
                     onAddCard={handleAddCard}
                     onDeleteCard={handleDelete}
                     onUpdate={handleUpdate}
+                    uploader={uploader}
                 />
             </div>
         <div className={styles.cardPreview}>

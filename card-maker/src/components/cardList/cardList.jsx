@@ -3,7 +3,7 @@ import CardItem from '../cardItem/cardItem';
 import CardEditForm from '../cardEditForm/cardEditForm';
 import styles from './cardList.module.css';
 
-const CardList = ({ onAddCard, cards, onDeleteCard, onUpdate }) => {
+const CardList = ({ onAddCard, cards, onDeleteCard, onUpdate, uploader }) => {
     return (
       <>
         <h2 className={styles.title}>Card Maker</h2>
@@ -13,9 +13,10 @@ const CardList = ({ onAddCard, cards, onDeleteCard, onUpdate }) => {
                     card={card}
                     onDeleteCard={onDeleteCard}
                     onUpdate={onUpdate}
+                    uploader={uploader}
                 />
         ))}
-        <CardItem onAddCard={onAddCard} />
+        <CardItem onAddCard={onAddCard} uploader={uploader} />
       </>
     );
 };
