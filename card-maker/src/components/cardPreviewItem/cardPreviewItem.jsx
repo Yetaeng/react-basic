@@ -2,21 +2,21 @@ import React from 'react';
 import styles from './cardPreviewItem.module.css';
 
 const CardPreviewItem = ({ card }) => {
+    const { color, fileURL } = card;
+
     let colorType;
-    if (card.color === 'light') {
+    if (color === 'light') {
         colorType = styles.light;
-    } else if (card.color === 'dark') {
+    } else if (color === 'dark') {
         colorType = styles.dark;
     } else {
         colorType = styles.colorful;
     }
 
-    let avatar = card.avatar ? URL.createObjectURL(card.avatar) : './images/default_logo.png';
-
     return (
         <li className={`${styles.cardPreviewItem} ${colorType}`}>
             <div className={styles.profile_area}>
-                <img src={avatar} alt="profile_img" className={styles.profile}/>
+                <img src={fileURL || './images/default_logo.png' } alt="profile_img" className={styles.profile}/>
             </div>
             <div className={styles.infos_area}>
                 <p className={styles.name}>{card.name}</p>

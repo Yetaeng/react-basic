@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import CardList from "../../components/cardList/cardList";
 import CardPreviewList from "../../components/cardPreviewList/cardPreviewList";
 
-const Main = ({ uploader }) => {
+const Main = ({ FileInput }) => {
     const navigate = useNavigate();
     const [cards, setCards] = useState([]);
 
@@ -22,14 +22,15 @@ const Main = ({ uploader }) => {
 
     const handleAddCard = useCallback(infos => {
         const card = {
-            id: Date.now(),
+            id: infos.id,
             name: infos.name,
             company: infos.company,
             color: infos.color,
             title: infos.title,
             email: infos.email,
             message: infos.message,
-            avatar: infos.avatar
+            fileName: infos.fileName,
+            fileURL: infos.fileURL,
         }
         setCards([...cards, card]);
     }, [cards])
@@ -65,11 +66,11 @@ const Main = ({ uploader }) => {
         <div className={styles.contents}>
             <div className={styles.cardMaker}>
                 <CardList
+                    FileInput={FileInput}
                     cards={cards}
                     onAddCard={handleAddCard}
                     onDeleteCard={handleDelete}
                     onUpdate={handleUpdate}
-                    uploader={uploader}
                 />
             </div>
         <div className={styles.cardPreview}>
