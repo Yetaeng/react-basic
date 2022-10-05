@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     width: 32em;
-    padding: 1.5em 1em;
+    padding: 1em 0.8em;
     margin-top: 1em;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     border-radius: 10px;
@@ -22,16 +22,10 @@
     background: linear-gradient(166deg, rgba(237, 193, 211, 1) 0%, rgba(212, 149, 161, 1) 60%, rgba(162, 63, 63, 1) 100%, rgba(127, 188, 242, 1) 100%);
 }
 
-.profile_area {
-    flex: 1 1 25%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .profile {
-    width: 100%;
-    height: 100px;
+    width: 10em;
+    height: 10em;
+    padding: 1em;
     border-radius: 50%;
 }
 
@@ -39,8 +33,8 @@
     display: flex;
     flex-direction: column;
     flex: 1 1 75%;
-    padding: 0 2em;
-    font-size: 0.8em;
+    padding: 0 1em;
+    font-size: 0.9em;
     line-height: 1.4em;
 }
 
@@ -50,9 +44,15 @@
     margin: 0.3em 0;
 }
 
-.infos_area hr {
-    margin: 0.5em 0;
-    height: 1px;
-    background-color: #725b53;
-    border: 1px;
+.company {
+    margin-bottom: 1em;
+}
+
+.company::after {
+    content: '';
+    display: block;
+    width: 90%;
+    height: 2px;
+    background-color: wheat;
+    transform: translateY(0.5em);
 }

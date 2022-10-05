@@ -5,7 +5,7 @@ import styles from './cardList.module.css';
 
 const CardList = ({ FileInput, onAddCard, cards, onDeleteCard, onUpdate }) => {
     return (
-      <>
+      <section className={styles.editor}>
         <h2 className={styles.title}>Card Maker</h2>
             {cards.map(card => (
                 <CardEditForm
@@ -17,7 +17,7 @@ const CardList = ({ FileInput, onAddCard, cards, onDeleteCard, onUpdate }) => {
                 />
         ))}
         <CardItem FileInput={FileInput} onAddCard={onAddCard} />
-      </>
+      </section>
     );
 };
 

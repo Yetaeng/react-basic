@@ -1,75 +1,21 @@
-.header {
+.main {
+    width: 80em;
+    height: 100vh;
+    background-color: white;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 80rem;
-    background-color: #385461;
-    padding: 0.3em 0;
-}
-
-.innerHeader {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.logo {
-    width: 3em;
-    margin-right: 34em;
-    margin-left: 36.5em;
-}
-
-.logoutBtn {
-    width: 5em;
-    height: 2em;
-    color: white;
-    background-color: black;
-    font-size: 0.7em;
-    border: none;
-    border-radius: 10px;
-}
-
-.logoutBtn:hover {
-    background-color: grey;
-    font-weight: 600;
-}
-
-.title {
-    font-size: 1.8rem;
-    color: white;
 }
 
 .contents {
     display: flex;
+    flex: 1;
     width: 80rem;
     height: 100vh;
     background-color: white
 }
 
-.cardMaker {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1 1 50%;
-    border-right: 1px solid grey;
-    padding: 2em 1em;
-}
-
-.cardPreview {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1 1 50%;
-    padding: 2em 1em;
-}
-
-.footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80rem;
-    height: 3rem;
-    font-size: 0.9rem;
-    color: white;
-    background-color: #385461;
+@media screen and (max-width: 62rem) {
+    .contents {
+        flex-direction: column;
+    }
 }

@@ -15,13 +15,10 @@ const CardPreviewItem = ({ card }) => {
 
     return (
         <li className={`${styles.cardPreviewItem} ${colorType}`}>
-            <div className={styles.profile_area}>
-                <img src={fileURL || './images/default_logo.png' } alt="profile_img" className={styles.profile}/>
-            </div>
+            <img className={styles.profile} src={fileURL || './images/default_logo.png' } alt="profile_img" />
             <div className={styles.infos_area}>
                 <p className={styles.name}>{card.name}</p>
-                <p>{card.company}</p>
-                <hr />
+                <p className={styles.company}>{card.company}</p>
                 <p>{card.title}</p>
                 <p>{card.email}</p>
                 <p>{card.message}</p>

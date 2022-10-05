@@ -57,18 +57,14 @@ const Main = ({ auth, FileInput }) => {
         <section className={styles.main}>
             <Header onLogout={onLogout}/>
             <div className={styles.contents}>
-                <div className={styles.cardMaker}>
-                    <CardList
-                        FileInput={FileInput}
-                        cards={cards}
-                        onAddCard={handleAddCard}
-                        onDeleteCard={handleDelete}
-                        onUpdate={handleUpdate}
-                    />
-                </div>
-                <div className={styles.cardPreview}>
-                    <CardPreviewList cards={cards} />
-                </div>
+                <CardList
+                    FileInput={FileInput}
+                    cards={cards}
+                    onAddCard={handleAddCard}
+                    onDeleteCard={handleDelete}
+                    onUpdate={handleUpdate}
+                />
+                <CardPreviewList cards={cards} />
             </div>
             <Footer />
         </section>

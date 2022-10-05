@@ -1,3 +1,11 @@
+.preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 50%;
+    padding: 2em 1em;
+}
+
 .title {
     color: #385461;
 }
