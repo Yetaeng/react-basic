@@ -1,24 +1,25 @@
 import React, { useState, useCallback } from "react";
 import styles from "./main.module.css";
-import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import CardList from "../../components/cardList/cardList";
 import CardPreviewList from "../../components/cardPreviewList/cardPreviewList";
+import Header from '../../components/header/header';
+import Footer from '../../components/footer/footer';
+import { useEffect } from 'react';
 
-const Main = ({ FileInput }) => {
+const Main = ({ auth, FileInput }) => {
     const navigate = useNavigate();
     const [cards, setCards] = useState([]);
 
-    const handleLogout = () => {
-        const logout = getAuth();
-        signOut(logout)
-        .then(() => {
-            navigate("/login");
+    const onLogout = () => {
+        auth.logout();
+    }
+
+    useEffect(() => {
+        auth.onAuthChange(user => {
+            if (!user) navigate('/');
         })
-        .catch(error => {
-            console.log(error);
-        });
-    };
+    })
 
     const handleAddCard = useCallback(infos => {
         const card = {
@@ -53,32 +54,24 @@ const Main = ({ FileInput }) => {
     }, [cards])
 
     return (
-        <>
-        <header className={styles.header}>
-        <div className={styles.innerHeader}>
-            <img className={styles.logo} src="./images/logo.png" alt="logo" />
-            <button onClick={handleLogout} className={styles.logoutBtn}>
-            Logout
-            </button>
-        </div>
-        <h1 className={styles.title}>Business Card Maker</h1>
-        </header>
-        <div className={styles.contents}>
-            <div className={styles.cardMaker}>
-                <CardList
-                    FileInput={FileInput}
-                    cards={cards}
-                    onAddCard={handleAddCard}
-                    onDeleteCard={handleDelete}
-                    onUpdate={handleUpdate}
-                />
+        <section className={styles.main}>
+            <Header onLogout={onLogout}/>
+            <div className={styles.contents}>
+                <div className={styles.cardMaker}>
+                    <CardList
+                        FileInput={FileInput}
+                        cards={cards}
+                        onAddCard={handleAddCard}
+                        onDeleteCard={handleDelete}
+                        onUpdate={handleUpdate}
+                    />
+                </div>
+                <div className={styles.cardPreview}>
+                    <CardPreviewList cards={cards} />
+                </div>
             </div>
-        <div className={styles.cardPreview}>
-            <CardPreviewList cards={cards} />
-        </div>
-        </div>
-        <footer className={styles.footer}>Code your dream</footer>
-        </>
+            <Footer />
+        </section>
     );
 };
 

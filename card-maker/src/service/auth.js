@@ -16,6 +16,16 @@ class Auth {
                 throw new Error(`${name} is unknown provider.`);
         }
     }
+
+    onAuthChange(onUserChange) {
+        authService.onAuthStateChanged(user => {
+            onUserChange(user);
+        })
+    }
+
+    logout() {
+        authService.signOut();
+    }
 }
 
 export default Auth;

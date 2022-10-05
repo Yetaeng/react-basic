@@ -9,9 +9,8 @@ function App({ auth, FileInput }) {
   return (
     <div className={styles.app}>
       <Routes>
-        <Route path="/login" element={<Login auth={auth}/>}></Route>
         <Route path="/" element={<Login auth={auth}/>}></Route>
-        <Route path="/main" element={<Main FileInput={FileInput} />}></Route>
+        <Route path="/main" element={<Main auth={auth} FileInput={FileInput} />}></Route>
       </Routes>
     </div>
   );
