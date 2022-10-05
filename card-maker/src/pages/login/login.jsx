@@ -1,12 +1,14 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
+import Footer from '../../components/footer/footer';
+import Header from '../../components/header/header';
 import { authService } from '../../service/firebase';
 import styles from './login.module.css';
 
 const Login = ({ auth }) => {
     const navigate = useNavigate();
 
-    const handleLogin = async(e) => {
+    const onLogin = e => {
         let name = e.target.textContent;
         auth
             .login(name)
@@ -45,16 +47,21 @@ const Login = ({ auth }) => {
     }
 
     return (
-        <div className={styles.container}>
-            <img src="./images/logo.png" alt="logo" className={styles.logo}/>
-            <h1 className={styles.title}>Business Card Maker</h1>
-            <div className={styles.loginArea}>
+        <section className={styles.login}>
+            <Header />
+            <section>
                 <h2>Login</h2>
-                <button className={styles.loginBtn} onClick={handleLogin}>Google</button>
-                <button className={styles.loginBtn} onClick={handleLogin}>Github</button>
-            </div>
-            <p className={styles.footer}>Code your dream</p>
-        </div>
+                <ul className={styles.list}>
+                    <li className={styles.item}>
+                        <button className={styles.button} onClick={onLogin}>Google</button>
+                    </li>
+                    <li className={styles.item}>
+                        <button className={styles.button} onClick={onLogin}>Github</button>
+                    </li>
+                </ul>
+            </section>
+            <Footer />
+        </section>
     )
 };
 

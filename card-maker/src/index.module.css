@@ -10,7 +10,7 @@ body {
   /* background-color: makerBlack; */
 }
 
-h1, h2, p, button,
+p, button,
 input, select, textarea,
 hr, ul, li {
   margin: 0;
