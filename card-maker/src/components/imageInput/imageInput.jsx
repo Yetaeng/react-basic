@@ -23,7 +23,7 @@ const ImageInput = ({ name, uploader, onFileChange }) => {
     }
 
     return (
-        <div className='container'>
+        <div className={styles.container}>
             <input
                 ref={inputRef}
                 className={styles.inputFile}
@@ -35,7 +35,8 @@ const ImageInput = ({ name, uploader, onFileChange }) => {
             {!loading && (
                 <button className={`${styles.button} ${name ? styles.pink : styles.grey}`} onClick={onBtnClick}>{name || 'No file'}</button>
             )}
-            {loading && <Loading />}
+            {/* {loading && <Loading />} */}
+            {loading && <div className={styles.loading}></div>}
         </div>
     );
 }
