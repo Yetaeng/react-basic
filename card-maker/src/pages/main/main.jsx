@@ -6,19 +6,35 @@ import CardPreviewList from "../../components/cardPreviewList/cardPreviewList";
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 
-const Main = ({ auth, FileInput }) => {
+const Main = ({ auth, FileInput, cardRepository }) => {
     const navigate = useNavigate();
+    const navigateState = useNavigate().state; // 로그인 컴포넌트를 통해 왔다면 값이 있을 거고, 다른 컴포넌트를 통해 왔다면 없음
     const [cards, setCards] = useState({}); // 성능을 위해 배열보다 오브젝트로 관리함
+    const [userId, setUserId] = useState(navigateState && navigateState.id) 
 
     const onLogout = () => {
         auth.logout();
     }
 
     useEffect(() => {
+        if (!userId) {
+            return;
+        }
+        const stopSync = cardRepository.syncCards(userId, card => {
+            setCards(card);
+        });
+        return () => stopSync;
+    }, [userId])
+
+    useEffect(() => {
         auth.onAuthChange(user => {
-            if (!user) navigate('/');
-        })
-    })
+            if (user) {
+                setUserId(user.uid);
+            } else {
+                navigate('/');
+            } 
+        });
+    });
 
     const createOrUpdateCard = card => {
         setCards(cards => {
@@ -26,6 +42,7 @@ const Main = ({ auth, FileInput }) => {
             updated[card.id] = card;
             return updated;
         });
+        cardRepository.saveCard(userId, card);
     }
 
     const deleteCard = card => {
@@ -34,6 +51,7 @@ const Main = ({ auth, FileInput }) => {
             delete updated[card.id];
             return updated;
         });
+        cardRepository.removeCard(userId, card);
     }
 
     return (

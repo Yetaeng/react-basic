@@ -4,13 +4,13 @@ import Main from './pages/main/main';
 import { Routes, Route } from 'react-router-dom'
 import styles from './app.module.css';
 
-function App({ auth, FileInput }) {
+function App({ auth, FileInput, cardRepository }) {
 
   return (
     <div className={styles.app}>
       <Routes>
         <Route path="/" element={<Login auth={auth}/>}></Route>
-        <Route path="/main" element={<Main auth={auth} FileInput={FileInput} />}></Route>
+        <Route path="/main" element={<Main auth={auth} FileInput={FileInput} cardRepository={cardRepository} />}></Route>
       </Routes>
     </div>
   );
