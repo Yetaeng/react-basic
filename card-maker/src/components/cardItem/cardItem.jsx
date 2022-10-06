@@ -24,7 +24,7 @@ const CardItem = ({ FileInput, onAddCard }) => {
           id: Date.now(),
           name: nameRef.current.value || '',
           company: companyRef.current.value || '',
-          color: colorRef.current.value || '',
+          color: colorRef.current.value,
           title: titleRef.current.value || '',
           email: emailRef.current.value || '',
           message: messageRef.current.value || '',

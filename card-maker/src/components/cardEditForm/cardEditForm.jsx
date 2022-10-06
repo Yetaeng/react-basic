@@ -4,13 +4,24 @@ import styles from './cardEditForm.module.css';
 const CardEditForm = ({ FileInput, card, onDeleteCard, onUpdate }) => {
     const { name, company, color, title, email, message, fileName } = card;
 
-    const onFileChange = e => {
-        onUpdate(card.id, 'fileName', e.fileName);
-        onUpdate(card.id, 'fileURL', e.fileURL);
+    const onFileChange = file => {
+        console.log(file);
+        onUpdate({
+            ...card,
+            fileName: file.fileName,
+            fileURL: file.fileURL,
+        });
     };
 
     const onChangeCard = e => {
-        onUpdate(card.id, e.target.name, e.target.value);
+        if (e.currentTarget == null) {
+            return;
+        }
+        e.preventDefault();
+        onUpdate({
+            ...card,
+            [e.currentTarget.name]: e.currentTarget.value
+        });
     };
 
     const onDelete = () => {
