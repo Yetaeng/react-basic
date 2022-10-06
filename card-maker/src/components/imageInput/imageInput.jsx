@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import { useState } from 'react';
 import styles from './imageInput.module.css';
-import Loading from '../../service/loading';
 
 const ImageInput = ({ name, uploader, onFileChange }) => {
     const inputRef = useRef();
@@ -33,9 +32,8 @@ const ImageInput = ({ name, uploader, onFileChange }) => {
                 onChange={onChange}
             />
             {!loading && (
-                <button className={`${styles.button} ${name ? styles.pink : styles.grey}`} onClick={onBtnClick}>{name || 'No file'}</button>
+                <button className={`${styles.button} ${name ? styles.pink : styles.grey}`} type="button" onClick={onBtnClick}>{name || 'No file'}</button>
             )}
-            {/* {loading && <Loading />} */}
             {loading && <div className={styles.loading}></div>}
         </div>
     );

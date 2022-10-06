@@ -12,7 +12,6 @@ class Uploader {
         let data;
         try {
             data = await res.json();
-            console.log('uploaded');
         } catch (error) {
             console.error(error);
         }

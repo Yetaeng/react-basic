@@ -37,10 +37,10 @@ const Login = ({ auth }) => {
                 <h2>Login</h2>
                 <ul className={styles.list}>
                     <li className={styles.item}>
-                        <button className={styles.button} onClick={onLogin}>Google</button>
+                        <button type='button' className={styles.button} onClick={onLogin}>Google</button>
                     </li>
                     <li className={styles.item}>
-                        <button className={styles.button} onClick={onLogin}>Github</button>
+                        <button type='button' className={styles.button} onClick={onLogin}>Github</button>
                     </li>
                 </ul>
             </section>

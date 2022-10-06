@@ -24,7 +24,7 @@ const Main = ({ auth, FileInput, cardRepository }) => {
             setCards(card);
         });
         return () => stopSync;
-    }, [userId])
+    }, [userId, cardRepository])
 
     useEffect(() => {
         auth.onAuthChange(user => {
@@ -34,7 +34,7 @@ const Main = ({ auth, FileInput, cardRepository }) => {
                 navigate('/');
             } 
         });
-    });
+    }, [auth, navigate]);
 
     const createOrUpdateCard = card => {
         setCards(cards => {

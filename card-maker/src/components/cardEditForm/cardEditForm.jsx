@@ -5,7 +5,6 @@ const CardEditForm = ({ FileInput, card, onDeleteCard, onUpdate }) => {
     const { name, company, color, title, email, message, fileName } = card;
 
     const onFileChange = file => {
-        console.log(file);
         onUpdate({
             ...card,
             fileName: file.fileName,
@@ -24,7 +23,8 @@ const CardEditForm = ({ FileInput, card, onDeleteCard, onUpdate }) => {
         });
     };
 
-    const onDelete = () => {
+    const onDelete = (e) => {
+        e.preventDefault();
         onDeleteCard(card);
     };
 
@@ -43,8 +43,8 @@ const CardEditForm = ({ FileInput, card, onDeleteCard, onUpdate }) => {
             <div className={styles.fileInput}>
                 <FileInput name={fileName} onFileChange={onFileChange} />
             </div>
-            <button className={styles.inputBtn} onClick={onDelete}>Delete</button>
-    </form>
+            <button type="submit" className={styles.inputBtn} onClick={onDelete}>Delete</button>
+        </form>
     )
 }
 
