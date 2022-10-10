@@ -5,6 +5,7 @@ import CardList from "../../components/cardList/cardList";
 import CardPreviewList from "../../components/cardPreviewList/cardPreviewList";
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
+import { useCallback } from 'react';
 
 const Main = ({ auth, FileInput, cardRepository }) => {
     const navigate = useNavigate();
@@ -12,9 +13,9 @@ const Main = ({ auth, FileInput, cardRepository }) => {
     const [cards, setCards] = useState({}); // 성능을 위해 배열보다 오브젝트로 관리함
     const [userId, setUserId] = useState(navigateState && navigateState.id) 
 
-    const onLogout = () => {
+    const onLogout = useCallback(() => {
         auth.logout();
-    }
+    }, [auth])
 
     useEffect(() => {
         if (!userId) {

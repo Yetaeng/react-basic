@@ -13,6 +13,6 @@ const CardPreview = ({ cards }) => {
                 </ul>
             </section>
         );
-    }
+    };
 
 export default CardPreview;
