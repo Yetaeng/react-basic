@@ -1,25 +1,27 @@
+@value makerBlack, makerWhite, makerShadow, makerColorful, makerWheat from '../../common/colors.css';
+
 .cardPreviewItem {
     display: flex;
     align-items: center;
     width: 32em;
     padding: 1em 0.8em;
     margin-top: 1em;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: makerShadow;
     border-radius: 10px;
 }
 
 .cardPreviewItem.light {
-    background-color: white;
+    background-color: makerWhite;
 }
 
 .cardPreviewItem.dark {
-    color: white;
-    background-color: black;
+    color: makerWhite;
+    background-color: makerBlack;
 }
 
 .cardPreviewItem.colorful {
-    color: white;
-    background: linear-gradient(166deg, rgba(237, 193, 211, 1) 0%, rgba(212, 149, 161, 1) 60%, rgba(162, 63, 63, 1) 100%, rgba(127, 188, 242, 1) 100%);
+    color: makerWhite;
+    background: makerColorful;
 }
 
 .profile {
@@ -53,6 +55,6 @@
     display: block;
     width: 90%;
     height: 2px;
-    background-color: wheat;
+    background-color: makerWheat;
     transform: translateY(0.5em);
 }

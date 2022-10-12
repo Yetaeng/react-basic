@@ -1,3 +1,5 @@
+@value makerIndiePink, makerLightGrey, makerPink from '../../common/colors.css';
+
 .container {
     display: flex;
     width: 100%;
@@ -21,19 +23,19 @@
 }
 
 .button.pink {
-    background-color: #ffcccb;
+    background-color: makerIndiePink;
 }
 
 .button.grey {
-    background-color: #e8e7e6;
+    background-color: makerLightGrey;
 }
 
 .loading {
     width: 1.5em;
     height: 1.5em;
     border-radius: 50%;
-    border: 3px solid #e8e7e6;
-    border-top: 3px solid pink;
+    border: 3px solid makerLightGrey;
+    border-top: 3px solid makerPink;
     animation: spin 2s linear infinite;
 }
 

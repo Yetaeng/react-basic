@@ -1,3 +1,5 @@
+@value makerGreen from '../../common/colors.css';
+
 .preview {
     display: flex;
     flex-direction: column;
@@ -8,7 +10,7 @@
 }
 
 .title {
-    color: #385461;
+    color: makerGreen;
 }
 
 .container {
