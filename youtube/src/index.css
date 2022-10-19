@@ -18,3 +18,8 @@ code {
   margin: 0;
   text-decoration: none;
 }
+
+#root {
+  display: flex;
+  justify-content: center;
+}
