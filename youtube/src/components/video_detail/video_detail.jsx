@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './video_detail.module.css';
 
+const he = require('he');
 const VideoDetail = ({ selectedVideo, selectedVideo: { snippet } }) => {
     return (
         <>
@@ -15,7 +16,7 @@ const VideoDetail = ({ selectedVideo, selectedVideo: { snippet } }) => {
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
             ></iframe>
-            <h2>{snippet.title}</h2>
+            <h2>{he.decode(snippet.title)}</h2>
             <h3>{snippet.channelTitle}</h3>
             <pre className={styles.description}>{snippet.description}</pre>
         </>
