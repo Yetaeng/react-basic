@@ -1,13 +1,17 @@
-@value makerBlack, makerWhite, makerShadow, makerColorful, makerWheat from '../../common/colors.css';
+@value makerBlack, makerWhite, makerGrey, makerShadow, makerColorful, makerWheat from '../../common/colors.css';
+
+.wrap {
+    margin-top: 1em;
+}
 
 .cardPreviewItem {
     display: flex;
     align-items: center;
     width: 32em;
     padding: 1em 0.8em;
-    margin-top: 1em;
     box-shadow: makerShadow;
     border-radius: 10px;
+    position: relative;
 }
 
 .cardPreviewItem.light {
@@ -57,4 +61,16 @@
     height: 2px;
     background-color: makerWheat;
     transform: translateY(0.5em);
+}
+
+.download {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    cursor: pointer;
+    color: makerGrey;
+}
+
+.cardPreviewItem:hover {
+
 }
