@@ -2,7 +2,6 @@ import React, { useRef, memo, useState } from 'react';
 import styles from './imageInput.module.css';
 
 const ImageInput = memo(({ name, uploader, onFileChange }) => {
-    // console.log('file input');
     const inputRef = useRef();
     const [loading, setLoading] = useState(false);
 

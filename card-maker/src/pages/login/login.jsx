@@ -13,7 +13,7 @@ const Login = ({ auth }) => {
         auth
             .login(name)
             .then(data => { goToMain(data.user.uid) })
-        }
+    }
     
     const goToMain = (userId) => {
         navigate("/main", {
@@ -23,7 +23,6 @@ const Login = ({ auth }) => {
         })
     }
     
-    // 로그인된 사용자가 있다면 바로 메인페이지로 이동하도록 함
     useEffect(() => {
         auth.onAuthChange(user => {
             user && goToMain(user.uid);

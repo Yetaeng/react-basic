@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 import styles from './header.module.css';
 
-// 로그인이 되어 있다면 로그아웃을 할 수 있도록 콜백함수를 받아옴
 const Header = memo(({ onLogout }) => (
   <header className={styles.header}>
     {onLogout && <button className={styles.logout} type="button" onClick={onLogout}>Logout</button>}

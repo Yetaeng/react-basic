@@ -47,7 +47,7 @@ function getStyles(color) {
             return styles.colorful
         default:
             throw new Error(`Unknown color: ${color}`)
-    };
+    }
 };
 
 export default CardPreviewItem;
